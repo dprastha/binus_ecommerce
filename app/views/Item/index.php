@@ -10,6 +10,7 @@
     <div class="container mt-4">
         <h2>Barang</h2>
         <a href="?action=add" class="btn btn-primary mb-2">Tambah Barang</a>
+        <a href="?action=dashboard" class="btn btn-primary mb-2">Dashboard Barang</a>
         <table class="table table-bordered">
             <thead>
                 <tr>

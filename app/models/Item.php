@@ -56,4 +56,46 @@ class ItemModel
         $stmt->bindParam(':IdBarang', $IdBarang);
         return $stmt->execute();
     }
+
+    // Get total items
+    public function getTotalItems()
+    {
+        $query = "SELECT COUNT(*) AS total FROM Barang";
+        $stmt = $this->db->query($query);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $data['total'];
+    }
+
+    // Get left items
+    public function getLeftItems()
+    {
+        $query = "SELECT SUM(b.JumlahPembelian - j.JumlahPenjualan) AS SisaBarang
+        FROM Penjualan j
+        JOIN Pembelian b ON j.IdBarang = b.IdBarang
+        JOIN Barang brg ON j.IdBarang = brg.IdBarang";
+        $stmt = $this->db->query($query);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $data['SisaBarang'];
+    }
+
+    public function getChartData()
+    {
+        $query = "SELECT 
+        brg.NamaBarang,
+        SUM(j.JumlahPenjualan * j.HargaJual) - SUM(b.JumlahPembelian * b.HargaBeli) AS Keuntungan
+        FROM Penjualan j
+        JOIN Pembelian b ON j.IdBarang = b.IdBarang
+        JOIN Barang brg ON j.IdBarang = brg.IdBarang
+        GROUP BY j.IdBarang, brg.IdPengguna";
+        $stmt = $this->db->query($query);
+        $data = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $data[$row['NamaBarang']] = $row['Keuntungan'];
+        }
+
+        return $data;
+    }
 }
