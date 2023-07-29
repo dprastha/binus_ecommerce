@@ -26,8 +26,8 @@
                         <td><?php echo $item['Keterangan']; ?></td>
                         <td><?php echo $item['Satuan']; ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $item['IdBarang']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="index.php?action=delete&id=<?php echo $item['IdBarang']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="?action=edit&id=<?php echo $item['IdBarang']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="?action=delete&id=<?php echo $item['IdBarang']; ?>" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

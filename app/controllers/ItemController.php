@@ -40,11 +40,11 @@ class ItemController
         $item = $itemModel->getItemById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $age = $_POST['age'];
+            $nama = $_POST['nama'];
+            $keterangan = $_POST['keterangan'];
+            $satuan = $_POST['satuan'];
 
-            $itemModel->updateItem($id, $name, $email, $age);
+            $itemModel->updateItem($id, $nama, $keterangan, $satuan);
 
             header('Location: index.php');
             exit;
