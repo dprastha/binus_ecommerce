@@ -34,7 +34,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Keuntungan Tiap Barang</h5>
-                        <canvas id="monthlyOrdersChart"></canvas>
+                        <canvas id="profitEachItem"></canvas>
                     </div>
                 </div>
             </div>
@@ -52,13 +52,13 @@
         var data = Object.values(chartData);
 
         // Create chart
-        var ctx = document.getElementById('monthlyOrdersChart').getContext('2d');
+        var ctx = document.getElementById('profitEachItem').getContext('2d');
         var chart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Monthly Orders',
+                    label: 'Keuntungan',
                     data: data,
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
